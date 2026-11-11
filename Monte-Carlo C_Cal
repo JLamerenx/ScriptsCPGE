@@ -1,0 +1,36 @@
+#===========================================================
+#IMPORTATION DES BIBLIOTHEQUES
+#===========================================================
+import matplotlib.pyplot as plt
+import numpy as np
+
+#===========================================================
+#SAISIE DES PARAMETRES 
+#===========================================================
+c = 4.18        #Capacité thermique massique de l'eau (en J/K/g)
+N = 100000      #Nombre de tirages
+
+#===========================================================
+#VALEURS EXPERIMENTALES ET AJOUT D'UNE COMPOSANTE ALEATOIRE
+#===========================================================
+m1 = 420 + np.random.uniform(-1,1,N)   #Masse calorimètre (en g)
+m2 = 516 + np.random.uniform(-1,1,N)   #Calo. + eau froide 
+m3 = 566 + np.random.uniform(-1,1,N)   #Calo. + eau fr + eau chaude
+
+Ti = 21   + np.random.uniform(-0.1,0.1,N) #Temp. eau froide (en °C)
+Tc = 53   + np.random.uniform(-0.2,0.2,N) #Temp. eau chaude (en °C)
+Tf = 30.5 + np.random.uniform(-0.5,0.5,N) #Temp. (en °C)
+
+
+#===========================================================
+#CALCUL DE Ccal
+#===========================================================
+Ccal = c * ((m2-m1) * (Tf-Ti) + (m3-m2) * (Tf-Tc)) / (Ti-Tf)
+
+#===========================================================
+#AFFICHAGE DES RESULTATS
+#===========================================================
+print("Capacité thermique du calorimètre : " , "\n"
+      "Ccal = ", round(np.mean(Ccal),3) , " J/K" , "\n"
+      "Incertitude-type : u(Ccal) = " , round(np.std(Ccal,ddof=1),3) , " J/K" , "\n")
+
