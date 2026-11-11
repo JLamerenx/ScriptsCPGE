@@ -74,8 +74,7 @@ print(f"Coefficient directeur : CD = {CD_moy:.3f} g·K^-1  avec u(CD) = {u_CD:.3
 print(f"Ordonnée à l'origine  : OO = {OO_moy:.4f} K^-1    avec u(OO) = {u_OO:.4f} K^-1\n")
 
 print("=== ENTHALPIE STANDARD DE DISSOLUTION ===")
-print(f"DrH° = ({DrH_moy:.0f} ± {u_DrH:.0f}) J·mol^-1")
-print(f" soit  ({DrH_moy/1000:.2f} ± {u_DrH/1000:.2f}) kJ·mol^-1\n")
+print(f"DrH° = ({DrH_moy:.0f} avec u(DrH°) : {u_DrH/1000:.0f}) kJ·mol^-1")
 
 print("=== COMPARAISON AVEC LA VALEUR TABULÉE (25 670 J·mol^-1) ===")
 print(f"Écart normalisé (z-score) = {z_score:.2f}")
@@ -108,7 +107,7 @@ ax2.axvline(DrH_tab / 1000, color='blue', linestyle='-', linewidth=2,
             label=f"Valeur tabulée : {DrH_tab/1000:.2f} kJ·mol$^{{-1}}$")
 ax2.set_xlabel("$\\Delta_{\\mathrm{r}}H^\\circ$ ($\\mathrm{kJ\\cdot mol^{-1}}$)")
 ax2.set_ylabel("Densité de probabilité")
-ax2.set_title(f"Distribution de Monte-Carlo ($N = {N}$, $z\\text{{-score}} = {z_score:.2f}$)")
+ax2.set_title(f"Distribution de Monte-Carlo (N = {N}, z_score = {z_score:.2f})")
 ax2.legend()
 ax2.grid(True, alpha=0.4)
 
