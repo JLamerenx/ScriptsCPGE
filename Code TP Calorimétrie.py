@@ -21,7 +21,7 @@ T = np.array([18.9, 17.6, 16.2, 15.3, 14.1, 13.1, 11.8])
 # Demi-étendues des instruments de mesure (loi uniforme)
 a_T = 0.2        # Demi-étendue sur une lecture de température (en °C ou K)
 a_m = 0.1        # Demi-étendue sur une pesée (en g)
-a_Ccal = 15.0    # Demi-étendue sur Ccal déterminée en Partie 1 (en J·K^-1) - mettre 0 si négligée
+u_Ccal = 15.0    # Incertitude-type sur Ccal déterminée en Partie 2 (en J·K^-1) - mettre 0 si négligée
 
 # =============================================================================
 # 3. GRANDEURS EXPÉRIMENTALES DE RÉFÉRENCE
@@ -44,7 +44,7 @@ for i in range(N):
     # Tirage unique par expérience pour les grandeurs initiales fixes
     Ti_simul = Ti + np.random.uniform(-a_T, a_T)
     me_simul = me + np.random.uniform(-a_m, a_m)
-    Ccal_simul = Ccal + np.random.uniform(-a_Ccal, a_Ccal)
+    Ccal_simul = Ccal + np.random.normal(0, u_Ccal)
     
     DeltaT_simul = T_simul - Ti_simul
     mu_simul = Ccal_simul / c
